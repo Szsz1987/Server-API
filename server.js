@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 
 const app = express();
 const testimonialsRoutes = require('./routes/testimonials.routes');
@@ -8,6 +9,7 @@ const seatsRoutes = require('./routes/seats.routes');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 app.use('/api', testimonialsRoutes);
 app.use('/api', concertsRoutes);
@@ -21,4 +23,4 @@ app.use((req,res) => {
 
 app.listen('8000',() => {
   console.log(path.join(__dirname, 'Server is running on port 8000'));
-}); 
+});
