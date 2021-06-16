@@ -29,7 +29,7 @@ router.route('/concerts').post((req,res) => {
 router.route('/concerts/:id').delete((req,res) => {
   db.concerts.forEach(concert => {
     if(concert.id && concert.id == req.params.id) {
-      const index = db.concerts.indexf(concert);
+      const index = db.concerts.indexOf(concert);
       db.concerts.splice(index,1);
       return res.json(db.concerts);
     }
@@ -51,4 +51,4 @@ router.route('/concerts/:id').put((req,res) => {
   res.status(404).json({ message: 'Not found...' });
 });
 
-module.exports = router; 
+module.exports = router;
