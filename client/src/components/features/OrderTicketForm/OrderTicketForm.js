@@ -1,11 +1,8 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Row, Col, Alert, Progress } from 'reactstrap';
-
 import './OrderTicketForm.scss';
 import SeatChooser from './../SeatChooser/SeatChooserContainer';
-
 class OrderTicketForm extends React.Component {
-
   state = {
     order: {
       client: '',
@@ -15,36 +12,31 @@ class OrderTicketForm extends React.Component {
     },
     isError: false,
   }
-
   updateSeat = (e, seatId) => {
     const { order } = this.state;
-
     e.preventDefault();
     this.setState({ order: { ...order, seat: seatId }});
   }
-
   updateTextField = ({ target }) => {
     const { order } = this.state;
     const { value, name } = target;
-
     this.setState({ order: { ...order, [name]: value }});
   }
-
   updateNumberField = ({ target }) => {
     const { order } = this.state;
     const { value, name } = target;
-
     this.setState({ order: { ...order, [name]: parseInt(value) }});
   }
 
   submitForm = async (e) => {
     const { order } = this.state;
-    const { addSeat } = this.props;
+    const { addSeat, loadSeats } = this.props;
 
     e.preventDefault();
 
     if(order.client && order.email && order.day && order.seat) {
-      addSeat(order);
+      await addSeat(order);
+      loadSeats();
       this.setState({ 
         order: {
           client: '',
@@ -58,13 +50,10 @@ class OrderTicketForm extends React.Component {
       this.setState({ isError: true });
     }
   }
-
   render() {
-
     const { updateSeat, updateTextField, updateNumberField, submitForm } = this;
     const { requests } = this.props;
     const { order, isError } = this.state;
-
     return (
       <Form className="order-ticket-form" onSubmit={submitForm}>
         <Row>
@@ -108,5 +97,4 @@ class OrderTicketForm extends React.Component {
     )
   };
 }
-
-export default OrderTicketForm; 
+export default OrderTicketForm;
