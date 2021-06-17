@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Row, Col, Alert, Progress } from 'reactstrap';
 import './OrderTicketForm.scss';
 import SeatChooser from './../SeatChooser/SeatChooserContainer';
+
 class OrderTicketForm extends React.Component {
   state = {
     order: {
@@ -12,16 +13,19 @@ class OrderTicketForm extends React.Component {
     },
     isError: false,
   }
+
   updateSeat = (e, seatId) => {
     const { order } = this.state;
     e.preventDefault();
     this.setState({ order: { ...order, seat: seatId }});
   }
+
   updateTextField = ({ target }) => {
     const { order } = this.state;
     const { value, name } = target;
     this.setState({ order: { ...order, [name]: value }});
   }
+
   updateNumberField = ({ target }) => {
     const { order } = this.state;
     const { value, name } = target;
@@ -50,6 +54,7 @@ class OrderTicketForm extends React.Component {
       this.setState({ isError: true });
     }
   }
+
   render() {
     const { updateSeat, updateTextField, updateNumberField, submitForm } = this;
     const { requests } = this.props;
@@ -97,4 +102,5 @@ class OrderTicketForm extends React.Component {
     )
   };
 }
-export default OrderTicketForm;
+
+export default OrderTicketForm; 
