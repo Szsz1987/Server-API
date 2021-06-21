@@ -25,4 +25,4 @@ const items = [
 
 const PromoCarousel = () => <UncontrolledCarousel className="promoCarousel" items={items} />;
 
-export default PromoCarousel; 
+export default PromoCarousel;

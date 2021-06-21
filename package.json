@@ -1,9 +1,4 @@
 {
-  "name": "Y",
-  "version": "1.0.0",
-  "main": "index.js",
-  "author": "Szymon <sszulinski@gmail.com>",
-  "license": "MIT",
   "scripts": {
     "start": "npx nodemon server.js",
     "build": "cd client && yarn install && yarn build"

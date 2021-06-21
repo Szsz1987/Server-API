@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Container } from 'reactstrap';
 import OrderTicketForm from '../../features/OrderTicketForm/OrderTicketFormContainer';
 
@@ -10,4 +9,4 @@ const Order = () => (
   </Container>
 );
 
-export default Order; 
+export default Order;

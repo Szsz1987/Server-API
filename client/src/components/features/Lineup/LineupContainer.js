@@ -11,4 +11,4 @@ const mapDispatchToProps = dispatch => ({
   loadConcerts: () => dispatch(loadConcertsRequest()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Lineup); 
+export default connect(mapStateToProps, mapDispatchToProps)(Lineup);

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Concert from './../Concert/Concert';
 
 const Concerts = ({ concerts }) => (
@@ -8,4 +7,4 @@ const Concerts = ({ concerts }) => (
   </section>
 )
 
-export default Concerts; 
+export default Concerts;

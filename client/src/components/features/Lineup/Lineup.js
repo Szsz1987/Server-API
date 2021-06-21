@@ -26,4 +26,4 @@ class Lineup extends React.Component {
   }
 }
 
-export default Lineup; 
+export default Lineup;

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
-
 import './Concert.scss';
 
 const Concert = ({ performer, price, genre, day, image }) => (
@@ -23,4 +22,4 @@ const Concert = ({ performer, price, genre, day, image }) => (
   </article>
 );
 
-export default Concert; 
+export default Concert;
