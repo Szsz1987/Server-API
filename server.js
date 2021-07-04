@@ -39,8 +39,7 @@ app.use((req,res) => {
 });
 
 // connects our backend code with the mongo database
-const dbURI = process.env.NODE_ENV === 'test' ? 'mongodb://localhost:27017/DBTest' : 'mongodb+srv://SzymonSz:mongoatlas@cluster0.ubue0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-mongoose.connect(dbURI, { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://SzymonSz:mongoatlas@cluster0.ubue0.mongodb.net/NewWaveDB?retryWrites=true&w=majority',{ useNewUrlParser: true });
 const db = mongoose.connection;
 
 db.once('open', () => {

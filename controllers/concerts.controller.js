@@ -4,6 +4,7 @@ const Seat = require('../models/seat.model');
 exports.getAll = async (req, res) => {
   try {
     const seats = await Seat.find();
+    const concerts = await Concert.find();
     const mappedConcerts = concerts.map(concert => {
       const takenSeats = seats.filter(seat => seat.day === concert.day);
       const freeSeats = 50. - takenSeats.length;
