@@ -1,4 +1,4 @@
-onst Concert = require('../models/concert.model');
+const Concert = require('../models/concert.model');
 const Seat = require('../models/seat.model');
 
 exports.getAll = async (req, res) => {
