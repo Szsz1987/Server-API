@@ -1,4 +1,4 @@
-const Concert = require('../models/concert.model');
+onst Concert = require('../models/concert.model');
 const Seat = require('../models/seat.model');
 
 exports.getAll = async (req, res) => {
@@ -22,7 +22,7 @@ exports.getAll = async (req, res) => {
 
 exports.getById = async (req, res) => {
   try {
-    const dep = await Concert.findById(req.params.id).populate('performer');
+    const dep = await Concert.findById(req.params.id);
     if(!dep) res.status(404).json({ message: 'Not found...' });
     else res.json(dep);
   }
@@ -72,4 +72,4 @@ exports.putConcert = async (req, res) => {
   catch(err) {
     res.status(500).json({ message: err });
   }
-}; 
+};

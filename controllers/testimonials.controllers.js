@@ -1,8 +1,9 @@
 const Testimonial = require('../models/testimonial.model');
+const sanitize = require('mongo-sanitize');
 
 exports.getAll = async (req, res) => {
   try {
-    res.json(await Testimonial.find().populate('author'));
+    res.json(await Testimonial.find());
   }
   catch(err) {
     res.status(500).json({ message: err });
@@ -11,7 +12,7 @@ exports.getAll = async (req, res) => {
 
 exports.getById = async (req, res) => {
   try {
-    const dep = await Testimonial.findById(req.params.id).populate('author');
+    const dep = await Testimonial.findById(req.params.id);
     if(!dep) res.status(404).json({ message: 'Not found...' });
     else res.json(dep);
   }
@@ -22,7 +23,8 @@ exports.getById = async (req, res) => {
 
 exports.postTestimonial = async (req, res) => {
   try {
-    const { author, text } = req.body;
+    const author = sanitize(req.body.author);
+    const text = sanitize(req.body.text);
     const newTestimonial = new Testimonial({ author, text });
     await newTestimonial.save();
     res.json({ message: 'Ok' });
