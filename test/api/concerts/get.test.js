@@ -11,11 +11,13 @@ const request = chai.request;
 
 describe('GET /api/departments', () => {
   before(async () => {
-    const testConcertOne = new Concert({ _id: '5d9f1159f81ce8d1ef2bie21', performer: 'John', genre: 'Disco', price: 10, day: 1, image: '/img/uploads/hdfh42sd213.jpg'  })
+    const testConcertOne = new Concert({ _id: '5d9f1159f81ce8d1ef2bee48', performer: 'John', genre: 'Rock', price: 10, day: 1, image: '/img/uploads/hdfh42sd213.jpg'  })
     await testConcertOne.save();
-    const testConcertTwo = new Concert({ _id: '5d9f1140f10a81216cfdie22', performer: 'John2', genre: 'Rock', price: 15, day: 1, image: '/img/uploads/hdfh42sd214.jpg'  })
+  
+    const testConcertTwo = new Concert({ _id: '5d9f1140f10a81216cfd4408', performer: 'John2', genre: 'Rock2', price: 15, day: 1, image: '/img/uploads/hdfh42sd214.jpg'  })
     await testConcertTwo.save();
-    const testSeatOne = new Seat({ _id: '5d9f1159f81ce8d1ef2bie23', day: 1, seat: 1, client: 'John', email: 'john@email' });
+
+    const testSeatOne = new Seat({ _id: '5d9f1159f81ce8d1ef2bee50', day: 1, seat: 1, client: 'John', email: 'john@email' });
     await testSeatOne.save();
   });
 
@@ -32,10 +34,10 @@ describe('GET /api/departments', () => {
   });
 
   it('/:id should return one department by :id ', async () => {
-    const res = await request(server).get('/api/concerts/5d9f1159f81ce8d1ef2bie21');
+    const res = await request(server).get('/api/concerts/5d9f1159f81ce8d1ef2bee48');
     expect(res.status).to.be.equal(200);
     expect(res.body).to.be.an('object');
-    expect(res.body.genre).to.be.equal('Disco');
+    expect(res.body.genre).to.be.equal('Rock');
   });
 
   it('should show proper tickets left', async () => {
@@ -46,4 +48,4 @@ describe('GET /api/departments', () => {
       expect(concert.tickets).to.be.equal(49);
     }
   });
-}); 
+});
